@@ -1,0 +1,267 @@
+/* Organizer Page Specific Styles */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fefcf8;
+  color: #0A1D56;
+  margin: 0;
+  padding: 0;
+}
+
+.organizer-section {
+  max-width: 720px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+.organizer-section h2 {
+  font-size: 2.4rem;
+  color: #0A1D56;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.organizer-section p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #444;
+}
+
+.event-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.event-form label {
+  font-weight: 600;
+  color: #333;
+}
+
+.event-form input,
+.event-form textarea {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border 0.3s ease;
+}
+
+.event-form input:focus,
+.event-form textarea:focus {
+  border-color: #0A1D56;
+  outline: none;
+}
+
+.event-form textarea {
+  resize: vertical;
+}
+
+button.btn-primary {
+  align-self: flex-start;
+  background-color: #FFD700;
+  color: #0A1D56;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+button.btn-primary:hover {
+  background-color: #e6c200;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .organizer-section {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+  }
+
+  .organizer-section h2 {
+    font-size: 2rem;
+  }
+
+  button.btn-primary {
+    width: 100%;
+    text-align: center;
+  }
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0A1D56; /* navy blue */
+  padding: 1rem 2rem;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: gold;
+  text-decoration: none;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: #F0F0F0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #FFD700; /* gold */
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.login-btn {
+  background-color: #ffffff;
+  color: #0A1D56;
+  border: 2px solid #0A1D56;
+}
+
+.login-btn:hover {
+  background-color: #eaeaea;
+}
+
+.signup-btn {
+  background-color: #FFD700; /* gold */
+  color: #0A1D56;
+}
+
+.signup-btn:hover {
+  background-color: #e6c200;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-right {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .auth-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+:root {
+  --navy-blue: #001f3f;
+  --blue: #0074D9;
+  --cream: #f5f1e9;
+  --beige: #d6cbbf;
+  --white: #ffffff;
+  --gold: #d4af37;
+  --shadow-light: rgba(212, 175, 55, 0.15);
+  --shadow-dark: rgba(0, 0, 0, 0.25);
+  --transition-speed: 0.3s;
+}
+
+/* Reset & basics */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--cream);
+  color: var(--navy-blue);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Header */
+.site-header {
+  background-color: var(--navy-blue);
+  color: var(--gold);
+  padding: 1.5rem 0;
+  box-shadow: 0 4px 8px var(--shadow-dark);
+  user-select: none;
+}
+
+.site-header .logo {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.main-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 2rem;
+}
+
+.main-nav a {
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color var(--transition-speed);
+}
+
+.main-nav a:hover,
+.main-nav a:focus {
+  color: var(--cream);
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Organizer Resources - TechSathi</title>
+  <link rel="stylesheet" href="/stylesheets/organizers.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-left">
+      <a href="/" class="logo">TechSathi</a>
+    </div>
+    <div class="navbar-right">
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/events">Events</a></li>
+        <li><a href="/organizers">Organizer Resources</a></li>
+        <li><a href="/help">Help</a></li>
+      </ul>
+      <div class="auth-buttons">
+        <a href="/login" class="btn login-btn">Login</a>
+        <a href="/signup" class="btn signup-btn">Sign Up</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="organizer-section">
+      <h2>Add Your Event</h2>
+      <p>Fill in the details below to list your event on TechSathi.</p>
+      
+      <form action="/organizers/add-event" method="POST" class="event-form">
+        <label for="name">Event Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required />
+
+        <label for="time">Time:</label>
+        <input type="time" id="time" name="time" required />
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required />
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="5" required></textarea>
+
+        <button type="submit" class="btn-primary">Add Event</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 TechSathi. All rights reserved.</p>
+      <p>Made with ❤️ in Pokhara</p>
+    </div>
+  </footer>
+</body>
+</html>
