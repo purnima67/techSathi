@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head><title>Dashboard</title></head>
+<body>
+  <h2>Welcome, <%= user.username %>!</h2>
+  <p>Your role is: <strong><%= user.role %></strong></p>
+  <% if (user.role === 'admin') { %>
+    <p>This is the admin dashboard.</p>
+  <% } else { %>
+    <p>This is the user dashboard.</p>
+  <% } %>
+  <a href="/logout">Logout</a>
+</body>
+</html>

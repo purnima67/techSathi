@@ -2,20 +2,158 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Events - TechSathi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TechSathi - Events</title>
   <link rel="stylesheet" href="/stylesheets/style.css" />
+  <style>
+    body {
+      background: #f8f6ef;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar {
+      background: #232946;
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .navbar a.logo {
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links li a:hover {
+      color: #eebbc3;
+    }
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    h1 {
+      color: #232946;
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 2rem;
+    }
+    .event-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(35,41,70,0.07);
+      padding: 1.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .event-card:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 4px 24px rgba(35,41,70,0.13);
+    }
+    .event-card h3 {
+      margin: 0 0 0.5rem 0;
+      color: #232946;
+    }
+    .event-card p {
+      margin: 0.2rem 0;
+      color: #555;
+    }
+    .btn-secondary {
+      margin-top: 1rem;
+      background: #eebbc3;
+      color: #232946;
+      border: none;
+      border-radius: 6px;
+      padding: 0.5rem 1.2rem;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s;
+      align-self: flex-start;
+    }
+    .btn-secondary:hover {
+      background: #ffd6e0;
+      color: #232946;
+    }
+    .site-footer {
+      background: #232946;
+      color: #fff;
+      text-align: center;
+      padding: 1.2rem 0;
+      margin-top: 3rem;
+    }
+    @media (max-width: 600px) {
+      .events-grid {
+        grid-template-columns: 1fr;
+      }
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <nav>
-    <a href="/">Home</a> | <a href="/events">Events</a>
+  <nav class="navbar">
+    <a href="/" class="logo">TechSathi</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/events">Events</a></li>
+      <li><a href="/organizers">Organizer Resources</a></li>
+      <li><a href="/help">Help</a></li>
+    </ul>
   </nav>
-  <h1>Upcoming Events</h1>
-  <ul>
-    <% events.forEach(event => { %>
-      <li>
-        <strong><%= event.name %></strong> - <%= event.date %> at <%= event.time %>
-      </li>
-    <% }) %>
-  </ul>
+
+  <div class="container">
+    <h1>Upcoming Events</h1>
+    <div class="events-grid">
+      <% if (events && events.length > 0) { %>
+        <% events.forEach(event => { %>
+          <div class="event-card">
+            <h3><%= event.name %></h3>
+            <p><strong>Date:</strong> <%= event.date %></p>
+            <p><strong>Time:</strong> <%= event.time %></p>
+            <a href="#" class="btn-secondary">More Details</a>
+            
+
+          </div>
+        <% }) %>
+      <% } else { %>
+        <p>No upcoming events at the moment. Check back soon!</p>
+      <% } %>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 TechSathi. All rights reserved.</p>
+      <p>Made with ❤️ in Pokhara</p>
+    </div>
+  </footer>
 </body>
 </html>

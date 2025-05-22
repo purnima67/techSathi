@@ -1,0 +1,36 @@
+<!-- <!DOCTYPE html>
+<html>
+<head><title>Sign Up</title></head>
+<body>
+  <h2>Sign Up (Demo)</h2>
+  <% if (error) { %><p style="color:red;"><%= error %></p><% } %>
+  <form method="POST" action="/signup">
+    <input name="username" placeholder="Username" required /><br/>
+    <input name="password" type="password" placeholder="Password" required /><br/>
+    <select name="role" required>
+      <option value="user">User</option>
+      <option value="admin">Admin</option>
+    </select><br/>
+    <button type="submit">Sign Up</button>
+  </form>
+  <p>Already have an account? <a href="/login">Login</a></p>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html>
+<head><title>Sign Up</title></head>
+<body>
+  <h2>Sign Up (Demo)</h2>
+  <form method="POST" action="/signup">
+    <input name="username" placeholder="Username" required /><br/>
+    <input name="password" type="password" placeholder="Password" required /><br/>
+    <select name="role" required>
+      <option value="user">User</option>
+      <option value="admin">Admin</option>
+    </select><br/>
+    <button type="submit">Sign Up</button>
+  </form>
+  <p>Already have an account? <a href="/login">Login</a></p>
+</body>
+</html>
+
