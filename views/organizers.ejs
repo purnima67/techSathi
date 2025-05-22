@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Organizer Resources - TechSathi</title>
-  <link rel="stylesheet" href="/stylesheets/organizers.css" />
+  <link rel="stylesheet" href="stylesheets/organizers.css">
 </head>
 <body>
   <nav class="navbar">
@@ -26,25 +26,60 @@
   </nav>
 
   <main class="container">
-    <section class="organizer-section">
+    <section class="organizer-hero">
+      <h1>Empower Your Community with Events</h1>
+      <p>Create and share exciting tech events with TechSathi. Inspire, connect, and grow your network by organizing memorable experiences!</p>
+      <a href="#event-form" class="btn-primary">Start Creating Now</a>
+    </section>
+
+    <section class="organizer-section" id="event-form">
       <h2>Add Your Event</h2>
-      <p>Fill in the details below to list your event on TechSathi.</p>
+      <p>Fill in the details below to list your event on TechSathi and reach a wider audience.</p>
       
       <form action="/organizers/add-event" method="POST" class="event-form">
-        <label for="name">Event Name:</label>
-        <input type="text" id="name" name="name" required />
+        <div class="form-group">
+          <label for="name">Event Name:</label>
+          <input type="text" id="name" name="name" placeholder="e.g., TechTalk 2025" required />
+        </div>
 
-        <label for="date">Date:</label>
-        <input type="date" id="date" name="date" required />
+        <div class="form-group-inline">
+          <div>
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required />
+          </div>
+          <div>
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time" required />
+          </div>
+        </div>
 
-        <label for="time">Time:</label>
-        <input type="time" id="time" name="time" required />
+        <div class="form-group">
+          <label for="location">Location:</label>
+          <input type="text" id="location" name="location" placeholder="e.g., Pokhara University Auditorium" required />
+        </div>
 
-        <label for="location">Location:</label>
-        <input type="text" id="location" name="location" required />
+        <div class="form-group-inline">
+          <div>
+            <label for="college">College:</label>
+            <select id="college" name="college" required>
+              <option value="">Select a college</option>
+              <option value="Prithvi Narayan Campus">Prithvi Narayan Campus</option>
+              <option value="Gandaki College Of Engineering">Gandaki College Of Engineering</option>
+              <option value="Pokhara University">Pokhara University</option>
+            </select>
+          </div>
+          <div>
+            <label for="club">Club:</label>
+            <select id="club" name="club" required>
+              <option value="">Select a club</option>
+            </select>
+          </div>
+        </div>
 
-        <label for="description">Description:</label>
-        <textarea id="description" name="description" rows="5" required></textarea>
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea id="description" name="description" rows="5" placeholder="Describe your event..." required></textarea>
+        </div>
 
         <button type="submit" class="btn-primary">Add Event</button>
       </form>
@@ -54,8 +89,43 @@
   <footer class="site-footer">
     <div class="container">
       <p>© 2025 TechSathi. All rights reserved.</p>
-      <p>Made with ❤️ in Pokhara</p>
+      <p>Made with ❤️ in Pokhara | <a href="/contact">Contact Us</a> | <a href="/terms">Terms</a></p>
     </div>
   </footer>
+
+  <script>
+    const collegeToClubs = {
+      "Prithvi Narayan Campus": [
+        "SheTechPNC",
+        "Csitan Pokhara",
+        "Association of CSIT Students",
+        "Association of BCA Students"
+      ],
+      "Gandaki College Of Engineering": [
+        "Girls in Tech",
+        "Tech People Clubs"
+      ],
+      "Pokhara University": [
+        "STEM Sisters Club"
+      ]
+    };
+
+    const collegeSelect = document.getElementById("college");
+    const clubSelect = document.getElementById("club");
+
+    collegeSelect.addEventListener("change", () => {
+      const selectedCollege = collegeSelect.value;
+      clubSelect.innerHTML = '<option value="">Select a club</option>';
+
+      if (selectedCollege && collegeToClubs[selectedCollege]) {
+        collegeToClubs[selectedCollege].forEach(club => {
+          const option = document.createElement("option");
+          option.value = club;
+          option.textContent = club;
+          clubSelect.appendChild(option);
+        });
+      }
+    });
+  </script>
 </body>
 </html>

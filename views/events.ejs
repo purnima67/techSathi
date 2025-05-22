@@ -2,20 +2,134 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Events - TechSathi</title>
-  <link rel="stylesheet" href="/stylesheets/style.css" />
+ <link rel="stylesheet" href="stylesheets/event.css" />
 </head>
 <body>
-  <nav>
-    <a href="/">Home</a> | <a href="/events">Events</a>
+  <nav class="navbar">
+    <div class="navbar-left">
+      <a href="/" class="logo">TechSathi</a>
+    </div>
+    <div class="navbar-right">
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/events">Events</a></li>
+        <li><a href="/organizers">Organizer Resources</a></li>
+        <li><a href="/help">Help</a></li>
+      </ul>
+      <div class="auth-buttons">
+        <a href="/login" class="btn login-btn">Login</a>
+        <a href="/signup" class="btn signup-btn">Sign Up</a>
+      </div>
+    </div>
   </nav>
-  <h1>Upcoming Events</h1>
-  <ul>
-    <% events.forEach(event => { %>
-      <li>
-        <strong><%= event.name %></strong> - <%= event.date %> at <%= event.time %>
-      </li>
-    <% }) %>
-  </ul>
+
+  <main class="container">
+    <section class="events-section">
+      <div class="events-header">
+        <h1>Explore TechSathi Events</h1>
+        <p>Join workshops, hackathons, and tech talks in Pokhara!</p>
+      </div>
+
+      <div class="filter-controls">
+        <label for="collegeSelect">Filter by College:</label>
+        <select id="collegeSelect">
+          <option value="all">All Colleges</option>
+          <option value="Prithvi Narayan Campus">Prithvi Narayan Campus</option>
+          <option value="Gandaki College Of Engineering">Gandaki College Of Engineering</option>
+          <option value="Pokhara University">Pokhara University</option>
+        </select>
+
+        <label for="clubSelect">Filter by Club:</label>
+        <select id="clubSelect">
+          <option value="all">All Clubs</option>
+        </select>
+      </div>
+
+      <div class="events-grid" id="eventsContainer">
+        <% events.forEach(event => { %>
+          <article class="event-card" data-college="<%= event.college %>" data-club="<%= event.club %>">
+            <div class="event-image">Event</div>
+            <h3><%= event.name %></h3>
+            <p><strong>Date:</strong> <%= event.date %></p>
+            <p><strong>Time:</strong> <%= event.time %></p>
+            <p><strong>College:</strong> <%= event.college %></p>
+            <p><strong>Club:</strong> <%= event.club %></p>
+            <a href="#" class="btn-secondary">More Details</a>
+          </article>
+        <% }) %>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 TechSathi. All rights reserved.</p>
+      <p>Made with ❤️ in Pokhara | <a href="/contact">Contact Us</a> | <a href="/terms">Terms</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const collegeToClubs = {
+      "Prithvi Narayan Campus": [
+        "SheTechPNC",
+        "Csitan Pokhara",
+        "Association of CSIT Students",
+        "Association of BCA Students"
+      ],
+      "Gandaki College Of Engineering": [
+        "Girls in Tech",
+        "Tech People Clubs"
+      ],
+      "Pokhara University": [
+        "STEM Sisters Club"
+      ]
+    };
+
+    const collegeSelect = document.getElementById('collegeSelect');
+    const clubSelect = document.getElementById('clubSelect');
+    const eventsContainer = document.getElementById('eventsContainer');
+
+    collegeSelect.addEventListener('change', () => {
+      const selectedCollege = collegeSelect.value;
+      clubSelect.innerHTML = '<option value="all">All Clubs</option>';
+
+      if (selectedCollege !== 'all' && collegeToClubs[selectedCollege]) {
+        collegeToClubs[selectedCollege].forEach(club => {
+          const option = document.createElement('option');
+          option.value = club;
+          option.textContent = club;
+          clubSelect.appendChild(option);
+        });
+      }
+
+      filterEvents();
+    });
+
+    clubSelect.addEventListener('change', filterEvents);
+
+    function filterEvents() {
+      const selectedCollege = collegeSelect.value;
+      const selectedClub = clubSelect.value;
+
+      document.querySelectorAll('.event-card').forEach(card => {
+        const cardCollege = card.getAttribute('data-college');
+        const cardClub = card.getAttribute('data-club');
+
+        let show = true;
+
+        if (selectedCollege !== 'all' && cardCollege !== selectedCollege) {
+          show = false;
+        }
+
+        if (selectedClub !== 'all' && cardClub !== selectedClub) {
+          show = false;
+        }
+
+        card.style.display = show ? 'block' : 'none';
+      });
+    }
+  </script>
 </body>
 </html>
