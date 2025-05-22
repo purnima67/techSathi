@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Events - TechSathi</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+<body>
+  <nav>
+    <a href="/">Home</a> | <a href="/events">Events</a>
+  </nav>
+  <h1>Upcoming Events</h1>
+  <ul>
+    <% events.forEach(event => { %>
+      <li>
+        <strong><%= event.name %></strong> - <%= event.date %> at <%= event.time %>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>
