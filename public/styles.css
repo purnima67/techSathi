@@ -1,6 +1,5 @@
-body {
-  background: red !important;
-}
+/* Global CSS for TechSathi */
+
 :root {
   --navy-blue: #001f3f;
   --blue: #0074D9;
@@ -224,4 +223,3 @@ body {
     font-size: 1rem;
   }
 }
-

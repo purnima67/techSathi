@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var bookRouter = require('./routes/book');
 
 var app = express();
+app.use(express.static(path.join(__dirname, 'public')));//new
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
