@@ -1,9 +1,15 @@
-var express = require('express');// module import gareko 
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) { // function vaneko middleware
-  res.render('index', { title: 'Purnima' });
+// Sample events data (replace this with your real data or DB fetch)
+const events = [
+  { name: "Tech Meetup", date: "2025-06-01", time: "10:00 AM" },
+  { name: "Coding Workshop", date: "2025-06-05", time: "02:00 PM" },
+  { name: "AI Conference", date: "2025-06-10", time: "11:00 AM" }
+];
+
+router.get('/', (req, res) => {
+  res.render('index', { events }); // Pass events to index.ejs
 });
 
 module.exports = router;

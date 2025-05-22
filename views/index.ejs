@@ -1,11 +1,115 @@
+<!-- views/index.ejs -->
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TechSathi - Upcoming Events</title>
+  <style>
+    /* Color Palette */
+    :root {
+      --navy-blue: #001f3f;
+      --blue: #0074D9;
+      --cream: #f5f1e9;
+      --beige: #d6cbbf;
+      --white: #ffffff;
+      --gold: #d4af37;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--cream);
+      color: var(--navy-blue);
+    }
+
+    header {
+      background-color: var(--navy-blue);
+      padding: 1rem 2rem;
+      color: var(--gold);
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 1.2px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 2rem;
+      color: var(--blue);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 2rem auto 4rem;
+      padding: 0 1rem;
+    }
+
+    .event-card {
+      background-color: var(--white);
+      border: 2px solid var(--beige);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+
+    .event-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 20px rgba(212, 175, 55, 0.4); /* gold glow */
+      border-color: var(--gold);
+    }
+
+    .event-card h3 {
+      margin: 0 0 0.5rem 0;
+      color: var(--navy-blue);
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+
+    .event-card p {
+      margin: 0;
+      color: var(--blue);
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: var(--navy-blue);
+      color: var(--cream);
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      box-shadow: 0 -3px 6px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <header>TechSathi</header>
+
+  <h2>Upcoming Events</h2>
+  <div class="events-grid">
+    <% events.forEach(event => { %>
+      <div class="event-card">
+        <h3><%= event.name %></h3>
+        <p><%= event.date %> @ <%= event.time %></p>
+      </div>
+    <% }) %>
+  </div>
+
+  <footer>© 2025 TechSathi. All rights reserved.</footer>
+
+</body>
 </html>

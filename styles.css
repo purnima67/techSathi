@@ -1,0 +1,103 @@
+/* styles.css */
+
+/* Base Colors */
+:root {
+  --navy: #0a2342;
+  --cream: #f8f4e3;
+  --beige: #eaddcf;
+  --gold: #d4af37;
+  --text-dark: #1a1a1a;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--cream);
+  color: var(--text-dark);
+  margin: 0;
+  padding: 0;
+}
+
+/* Hero Section */
+.hero {
+  background-color: var(--navy);
+  color: var(--cream);
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.btn,
+.btn-secondary {
+  background-color: var(--gold);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 8px;
+  margin: 0 0.5rem;
+  display: inline-block;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid var(--gold);
+  color: var(--gold);
+}
+
+/* Section Styling */
+section {
+  padding: 3rem 2rem;
+}
+
+h2 {
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+
+/* Event Cards */
+.events-grid,
+.venues-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.event-card,
+.venue-card {
+  background-color: white;
+  border: 1px solid var(--beige);
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Testimonial */
+.testimonial blockquote {
+  background-color: var(--beige);
+  border-left: 5px solid var(--gold);
+  margin: 0;
+  padding: 1rem 2rem;
+  font-style: italic;
+}
+
+/* Footer */
+footer {
+  background-color: var(--navy);
+  color: var(--cream);
+  text-align: center;
+  padding: 1rem;
+}
+
+footer nav a {
+  color: var(--gold);
+  margin: 0 10px;
+  text-decoration: none;
+}
