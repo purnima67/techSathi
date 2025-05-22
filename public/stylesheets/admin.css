@@ -1,0 +1,189 @@
+/* public/stylesheets/admin.css */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f1e9;
+    color: #001f3f;
+    line-height: 1.6;
+}
+
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #001f3f;
+    padding: 1rem 2rem;
+    color: #fff;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #d4af37;
+    text-decoration: none;
+}
+
+.nav-center h1 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #fff;
+    padding: 20px;
+    border-right: 1px solid #d4af37;
+}
+
+.dash a {
+    display: block;
+    padding: 10px;
+    color: #001f3f;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.dash a:hover {
+    color: #d4af37;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li a {
+    display: block;
+    padding: 10px;
+    color: #001f3f;
+    text-decoration: none;
+}
+
+.sidebar li a:hover {
+    color: #d4af37;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.main-content h2 {
+    color: #001f3f;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
+}
+
+th, td {
+    padding: 12px 15px; /* Slightly increased padding for better spacing */
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #001f3f;
+    color: #fff;
+    font-weight: 600;
+}
+
+td {
+    font-size: 0.95rem; /* Slightly smaller font for better fit */
+}
+
+/* Style for the Actions column to ensure buttons are spaced */
+td:last-child {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between Edit and Delete buttons */
+}
+
+.btn {
+    display: inline-block; /* Ensure buttons are inline-block for proper spacing */
+    padding: 8px 16px;
+    color: #fff;
+    background-color: #001f3f;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.1s ease; /* Smooth transition */
+}
+
+.btn:hover {
+    background-color: #d4af37;
+    color: #001f3f;
+    transform: translateY(-2px); /* Subtle lift effect on hover */
+}
+
+.delete-btn {
+    background-color: #ff4444;
+}
+
+.delete-btn:hover {
+    background-color: #cc0000;
+    transform: translateY(-2px); /* Apply lift effect to delete button as well */
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #d4af37;
+    }
+
+    td:last-child {
+        flex-direction: column; /* Stack buttons vertically on small screens */
+        gap: 8px;
+    }
+
+    .btn {
+        width: 100%; /* Full-width buttons on small screens */
+        text-align: center;
+    }
+}

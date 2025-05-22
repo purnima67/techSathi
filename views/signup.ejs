@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up - TechSathi</title>
+  <link rel="stylesheet" href="/stylesheets/auth.css"> 
+</head>
+<body>
+  <h2>Sign Up</h2>
+  <% if (error) { %>
+    <p style="color:red;"><%= error %></p>
+  <% } %>
+  <form action="/auth/signup" method="POST">
+    <label>Username: <input type="text" name="username" required></label><br>
+    <label>Password: <input type="password" name="password" required></label><br>
+    <button type="submit">Sign Up</button>
+  </form>
+  <p>Already have an account? <a href="/auth/login">Login</a></p>
+</body>
+</html>

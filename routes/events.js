@@ -1,9 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const events = require('../resources/event');
+const connectDB = require('../database');
 
-router.get('/', (req, res) => {
-  res.render('events', { events });
+router.get('/', async (req, res) => {
+  try {
+    const client = await connectDB();
+    const db = client.db('book-app');
+    const events = await db.collection('events').find().toArray();
+    res.render('events', { events });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Database error');
+  }
 });
 
 module.exports = router;

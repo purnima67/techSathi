@@ -1,19 +1,28 @@
 const express = require('express');
 const router = express.Router();
-const events = require('../resources/event');
+const connectDB = require('../database');
+const Event = require('../models/Event');
+
+connectDB();
 
 router.get('/', (req, res) => {
   res.render('organizers');
 });
 
-router.post('/add-event', (req, res) => {
-  const { name, date, time, location, description, college, club } = req.body;
+router.post('/add-event', async (req, res) => {
+  const { name, date, time, location, description, college, club, phone } = req.body;
 
-  // Add the new event to the array
-  events.push({ name, date, time, location, description, college, club });
-
-  // Redirect to events page
-  res.redirect('/events');
+  try {
+    const client = await connectDB();
+    const db = client.db('book-app');
+    await db.collection('events').insertOne({
+      name, date, time, location, description, college, club, phone
+    });
+    res.redirect('/events');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Database error');
+  }
 });
 
 module.exports = router;

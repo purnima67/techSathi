@@ -1,0 +1,127 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - TechSathi</title>
+    <link rel="stylesheet" href="/stylesheets/admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="/" class="logo">TechSathi</a>
+        </div>
+        <div class="nav-center">
+            <h1>Admin Panel</h1>
+        </div>
+    </nav>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="dash"><a href="/admin">Dashboard</a></div>
+            <ul>
+                <li><a href="/admin/events">Show Events</a></li>
+                <li><a href="/admin/add-events">Add Events</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <h2>Event List</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>College</th>
+                        <th>Club</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% events.forEach(event => { %>
+                        <tr>
+                            <td><%= event.name %></td>
+                            <td><%= event.date %></td>
+                            <td><%= event.time %></td>
+                            <td><%= event.college %></td>
+                            <td><%= event.club %></td>
+                            <td>
+                                <a href="/admin/edit-event/<%= event._id %>" class="btn">Edit</a>
+                                <form action="/admin/delete-event" method="POST">
+                                    <input type="hidden" name="id" value="<%= event._id %>">
+                                    <button type="submit" class="btn delete-btn" onclick="return confirm('Are you sure?')">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </main>
+    </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - TechSathi</title>
+    <link rel="stylesheet" href="/stylesheets/admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="/" class="logo">TechSathi</a>
+        </div>
+        <div class="nav-center">
+            <h1>Admin Panel</h1>
+        </div>
+    </nav>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="dash"><a href="/admin">Dashboard</a></div>
+            <ul>
+                <li><a href="/admin/events">Show Events</a></li>
+                <li><a href="/admin/add-events">Add Events</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <h2>Event List</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>College</th>
+                        <th>Club</th>
+                        <th>Phone</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% events.forEach(event => { %>
+                        <tr>
+                            <td><%= event.name %></td>
+                            <td><%= event.date %></td>
+                            <td><%= event.time %></td>
+                            <td><%= event.college %></td>
+                            <td><%= event.club %></td>
+                            <td><%= event.phone %></td>
+                            <td>
+                                <a href="/admin/edit-event/<%= event._id %>" class="btn">Edit</a>
+                                <form action="/admin/delete-event" method="POST">
+                                    <input type="hidden" name="id" value="<%= event._id %>">
+                                    <button type="submit" class="btn delete-btn" onclick="return confirm('Are you sure?')">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </main>
+    </div>
+</body>
+</html>

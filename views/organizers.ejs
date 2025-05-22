@@ -8,23 +8,20 @@
 </head>
 <body>
   <nav class="navbar">
-    <div class="navbar-left">
+    <div class="nav-left">
       <a href="/" class="logo">TechSathi</a>
     </div>
-    <div class="navbar-right">
-      <ul class="nav-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/events">Events</a></li>
-        <li><a href="/organizers">Organizer Resources</a></li>
-        <li><a href="/help">Help</a></li>
-      </ul>
-      <div class="auth-buttons">
-        <a href="/login" class="btn login-btn">Login</a>
-        <a href="/signup" class="btn signup-btn">Sign Up</a>
-      </div>
+    <div class="nav-center">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/events" class="nav-link">Events</a>
+      <a href="/resources" class="nav-link">Organizer Resources</a>
+      <a href="/help" class="nav-link">Help</a>
+    </div>
+    <div class="nav-right">
+      <a href="/login" class="nav-link login">Login</a>
+      <a href="/signup" class="nav-link signup">Sign Up</a>
     </div>
   </nav>
-
   <main class="container">
     <section class="organizer-hero">
       <h1>Empower Your Community with Events</h1>
@@ -79,6 +76,11 @@
         <div class="form-group">
           <label for="description">Description:</label>
           <textarea id="description" name="description" rows="5" placeholder="Describe your event..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number:</label>
+          <input type="tel" id="phone" name="phone" placeholder="e.g., +977-984-1234567" required />
         </div>
 
         <button type="submit" class="btn-primary">Add Event</button>
