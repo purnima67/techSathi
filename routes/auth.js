@@ -22,7 +22,7 @@ router.post('/signup', async (req, res) => {
     if (existingUser) {
       return res.render('signup', { error: 'Username already exists' });
     }
-    // Store the user in the database (plaintext password for demo purposes)
+  
     await db.collection('users').insertOne({ username, password });
     res.redirect('/auth/login');
   } catch (err) {
@@ -45,15 +45,15 @@ router.post('/login', async (req, res) => {
     if (!user) {
       return res.render('login', { error: 'Invalid username or password' });
     }
-    // Check password (plaintext comparison for demo purposes)
+    
     if (user.password !== password) {
       return res.render('login', { error: 'Invalid username or password' });
     }
-    // Hardcoded redirects based on username and password
+   
     if (username === 'admin' && password === 'admin123') {
       res.redirect('/admin');
     } else if (username === 'user' && password === 'user123') {
-      res.redirect('/user');
+      res.redirect('/');
     } else {
       res.render('login', { error: 'Invalid credentials for demo' });
     }

@@ -11,13 +11,14 @@ const adminRouter = require('./routes/admin');
 var eventsRouter = require('./routes/events'); 
 const authRouter = require('./routes/auth');
 const session = require('express-session');
-
+const helpRouter = require('./routes/help');
 var app = express();
 app.use(session({ secret: 'your-secret-key', resave: false, saveUninitialized: false }));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use('/auth', authRouter);
 app.use(logger('dev'));
+app.use('/help', helpRouter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());

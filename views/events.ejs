@@ -9,7 +9,7 @@
 <body>
  <nav class="navbar">
   <div class="nav-left">
-    <a href="/" class="logo">TechSathi</a>
+   <div class="logo">Tech<span>साथी</span></div>
   </div>
   <div class="nav-center">
     <a href="/" class="nav-link">Home</a>
@@ -30,9 +30,9 @@
         <p>Join workshops, hackathons, and tech talks in Pokhara!</p>
       </div>
 
-      <div class="filter-controls">
+      <form id = "event-form" class="filter-controls">
         <label for="collegeSelect">Filter by College:</label>
-        <select id="collegeSelect">
+        <select name="college" id="collegeSelect">
           <option value="all">All Colleges</option>
           <option value="Prithvi Narayan Campus">Prithvi Narayan Campus</option>
           <option value="Gandaki College Of Engineering">Gandaki College Of Engineering</option>
@@ -40,10 +40,10 @@
         </select>
 
         <label for="clubSelect">Filter by Club:</label>
-        <select id="clubSelect">
+        <select name="club" id="clubSelect">
           <option value="all">All Clubs</option>
         </select>
-      </div>
+      </form>
 
       <div class="events-grid" id="eventsContainer">
         <% events.forEach(event => { %>
@@ -57,7 +57,7 @@
             <a href="#" class="btn-secondary">More Details</a>
           </article>
         <% }) %>
-      </div>
+        </div>
     </section>
   </main>
 
@@ -92,10 +92,12 @@
     collegeSelect.addEventListener('change', () => {
       const selectedCollege = collegeSelect.value;
       clubSelect.innerHTML = '<option value="all">All Clubs</option>';
+    
 
       if (selectedCollege !== 'all' && collegeToClubs[selectedCollege]) {
         collegeToClubs[selectedCollege].forEach(club => {
           const option = document.createElement('option');
+          option.name = "club";
           option.value = club;
           option.textContent = club;
           clubSelect.appendChild(option);
@@ -126,7 +128,12 @@
         }
 
         card.style.display = show ? 'block' : 'none';
+
       });
+      if(selectedClub != "" && selectedClub != "all"){
+         document.getElementById("event-form").submit();
+      }
+     
     }
   </script>
 </body>

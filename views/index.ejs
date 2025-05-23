@@ -9,7 +9,7 @@
 <body>
  <nav class="navbar">
   <div class="nav-left">
-    <a href="/" class="logo">TechSathi</a>
+    <div class="logo">Tech<span>साथी</span></div>
   </div>
   <div class="nav-center">
     <a href="/" class="nav-link">Home</a>
@@ -18,8 +18,8 @@
     <a href="/help" class="nav-link">Help</a>
   </div>
   <div class="nav-right">
-    <a href="/login" class="nav-link login">Login</a>
-    <a href="/signup" class="nav-link signup">Sign Up</a>
+    <a href="/auth/login" class="nav-link login">Login</a>
+    <a href="/auth/signup" class="nav-link signup">Sign Up</a>
   </div>
 </nav>
   <!-- <header class="site-header">
@@ -47,35 +47,33 @@
     <h1>Welcome to <span>TechSathi</span></h1>
     <p>Your gateway to the best tech events in Pokhara and beyond.</p>
     <form class="search-bar" action="/events" method="get">
-      <input type="text" name="query" placeholder="Search events, organizers, or topics..." />
+      <input type="text" name="query" id="searchInput" placeholder="Search events, organizers, or topics..." />
       <button type="submit">Search</button>
     </form>
     <a href="#featured-events" class="scroll-btn">See Upcoming Events</a>
   </div>
 </section>
 <section class="spotlight-events" id="spotlight">
-  <h2>Spotlight Events</h2>
+  <h2>Upcoming Events</h2>
   <div class="event-grid">
-    <div class="event-card">
-      <h3>AI Conference 2025</h3>
-      <p>Discover the future of artificial intelligence and meet top industry experts.</p>
-      <p class="event-date">June 15, 2025</p>
-      <a href="#" class="btn-learn">Learn More</a>
-    </div>
-    <div class="event-card">
-      <h3>Startup Showcase Pokhara</h3>
-      <p>See the most exciting startups pitch live and connect with investors.</p>
-      <p class="event-date">July 5, 2025</p>
-      <a href="#" class="btn-learn">Learn More</a>
-    </div>
-    <div class="event-card">
-      <h3>Women in Tech Meetup</h3>
-      <p>Celebrate and empower women in the tech industry with talks and networking.</p>
-      <p class="event-date">August 10, 2025</p>
-      <a href="#" class="btn-learn">Learn More</a>
-    </div>
+    <% if (events && events.length > 0) { %>
+      <% events.forEach(event => { %>
+        <div class="event-card">
+          <h3><%= event.name %></h3>
+          <p><%= event.description %></p>
+          <p class="event-date"><%= event.date %> at <%= event.time %></p>
+          <p class="event-location"><strong>Location:</strong> <%= event.location %></p>
+          <p class="event-college"><strong>College:</strong> <%= event.college %></p>
+          <p class="event-club"><strong>Club:</strong> <%= event.club %></p>
+          <p class="event-phone"><strong>Contact:</strong> <%= event.phone %></p>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <p>No upcoming events at the moment. Check back soon!</p>
+    <% } %>
   </div>
 </section>
+
   <!-- <main> -->
     <!-- <section id="upcoming-events" class="events-section container">
       <h2>Upcoming Events</h2>
@@ -101,5 +99,25 @@
       <p>Made with :heart: in Pokhara</p>
     </div>
   </footer>
+
+  <script>
+     const searchInput = document.getElementById("searchInput");
+const resultsList = document.getElementById("searchResults");
+
+searchInput.addEventListener("input", async () => {
+  const query = searchInput.value.trim();
+  if (query.length === 0) {
+    resultsList.innerHTML = "";
+    return;
+  }
+
+  const res = await fetch(`/search?query=${encodeURIComponent(query)}`);
+  console.log(res)
+
+  const results = await res.json();
+
+  resultsList.innerHTML = results.map(item => `<li>${item.name}</li>`).join("");
+});
+  </script>
 </body>
 </html>

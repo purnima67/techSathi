@@ -248,6 +248,7 @@ body {
   transition: transform var(--transition-speed);
 }
 
+
 .event-card:hover {
   transform: translateY(-5px);
 }

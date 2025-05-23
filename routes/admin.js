@@ -3,12 +3,12 @@ const router = express.Router();
 const connectDB = require('../database');
 const { ObjectId } = require('mongodb');
 
-// Middleware to simulate admin access
+
 const isAdmin = (req, res, next) => {
-  next(); // Replace with real authentication later
+  next(); //
 };
 
-// Admin dashboard: list events
+
 router.get('/', isAdmin, async (req, res) => {
   try {
     const client = await connectDB();
@@ -21,12 +21,12 @@ router.get('/', isAdmin, async (req, res) => {
   }
 });
 
-// Render add event form
+
 router.get('/add-events', isAdmin, (req, res) => {
   res.render('add-events', { event: null });
 });
 
-// Add new event
+
 router.post('/add-events', isAdmin, async (req, res) => {
   const { name, date, time, college, club } = req.body;
   try {
@@ -40,12 +40,10 @@ router.post('/add-events', isAdmin, async (req, res) => {
   }
 });
 
-// Render edit form
 router.get('/edit-event/:id', isAdmin, async (req, res) => {
   try {
     const client = await connectDB();
     const db = client.db('book-app');
-    // req.params.id is used here
     const event = await db.collection('events').findOne({ _id: new ObjectId(req.params.id) });
     if (event) {
       res.render('add-events', { event });
@@ -80,7 +78,7 @@ router.get('/delete-event/:id', isAdmin, async (req, res) => {
   try {
     const client = await connectDB();
     const db = client.db('book-app');
-    // req.params.id is used here
+  
       await db.collection('events').deleteOne({ _id: new ObjectId(req.params.id) });
 
     res.redirect('/admin');
